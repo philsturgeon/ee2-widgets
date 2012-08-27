@@ -4,10 +4,10 @@
  * Installer for Widgets module
  *
  * @package		Widgets
- * @subpackage	ThirdParty
+ * @subpackage	Third-Party
  * @category	Modules
  * @author		Phil Sturgeon
- * @link		http://philsturgeon.co.uk/expressionengine/widgets
+ * @link		http://devot-ee.com/add-ons/widgets
  */
 class Widgets_upd {
 

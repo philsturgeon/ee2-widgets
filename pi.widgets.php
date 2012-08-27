@@ -7,7 +7,7 @@
  * @subpackage	Third Party
  * @category	Modules
  * @author		Phil Sturgeon
- * @link		http://getsparkplugs.com/rest
+ * @link		http://devot-ee.com/add-ons/widgets
  */
 
 include_once PATH_THIRD.'widgets/libraries/Widget'.EXT;
