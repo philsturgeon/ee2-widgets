@@ -4,7 +4,7 @@
  * WIDGET Add-on
  *
  * @package		ExpressionEngine 2
- * @subpackage	Third Party
+ * @subpackage	Third-Party
  * @category	Modules
  * @author		Phil Sturgeon
  * @link		http://devot-ee.com/add-ons/widgets

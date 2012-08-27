@@ -14,7 +14,7 @@ class Widgets_upd {
 	public $module_name = "Widgets";
 	public $version     = '1.3.0';
 
-    function Widgets_upd()
+    public function Widgets_upd()
     {
 		// Make a local reference to the ExpressionEngine super object
 		$this->EE =& get_instance();
@@ -23,7 +23,7 @@ class Widgets_upd {
     /**
      * Installer for the Rating module
      */
-    function install()
+    public function install()
 	{
 		$data = array(
 			'module_name' 	 => $this->module_name,
@@ -74,7 +74,7 @@ class Widgets_upd {
 	/**
 	 * Uninstall the Widgets module
 	 */
-	function uninstall()
+	public function uninstall()
 	{
 		$this->EE->load->dbforge();
 
@@ -101,7 +101,7 @@ class Widgets_upd {
 	 * @return boolean indicating whether or not the module was updated
 	 */
 
-	function update($current = '')
+	public function update($current = '')
 	{
 		return FALSE;
 	}

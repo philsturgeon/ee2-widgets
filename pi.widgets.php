@@ -45,14 +45,14 @@ class Widgets extends Widget
 		$this->load->library('widget');
 	}
 
-	function widget()
+	public function widget()
 	{
 		$slug = $this->TMPL->fetch_param('name');
 
 		return $this->widget->render($slug, $options);
 	}
 
-	function area()
+	public function area()
 	{
 		$area = $this->TMPL->fetch_param('name');
 		$wrapper_html = $this->TMPL->tagdata ? $this->TMPL->tagdata : $this->_default_wrapper;
@@ -82,7 +82,7 @@ class Widgets extends Widget
 		return $this->_rendered_areas[$area] = $return;
 	}
 
-	function instance()
+	public function instance()
 	{
 		$id = $this->TMPL->fetch_param('id');
 		
