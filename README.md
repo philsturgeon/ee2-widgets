@@ -18,11 +18,11 @@ There are 3 types of data involved with the Widgets add-on:
 
 To output a widget area - and therefor all of the instances associated, you can simply use the exp:area tag with the area slug mentioned.
 
-	{exp:area name="sidebar"}
+	{exp:widgets:area name="sidebar"}
 
 If you want to customise the wrapping HTML for this widget area you can use double-tag syntax:
 
-	{exp:area name="sidebar"}
+	{exp:widgets:area name="sidebar"}
 		<div class="widget {slug}">
 			<h3>{instance_title}</h3>
 
@@ -30,13 +30,13 @@ If you want to customise the wrapping HTML for this widget area you can use doub
 			{body}
 			</div>
 		</div>
-	{/exp:area}
+	{/exp:widgets:area}
 
-That way instances will all be wrapped with different HTML and you could for example remove the instance title from displaying or change class 
+That way instances will all be wrapped with different HTML and you could for example remove the instance title from displaying or change class
 names.
 
 You can also call up instances on their own:
 
-	{exp:instance id="5"}
+	{exp:widgets:instance id="5"}
 
 This is less usable and harder to understand when looking at it, but if you want to re-use a widget you can.
