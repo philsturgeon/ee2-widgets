@@ -46,6 +46,7 @@ class Widgets_mcp
 		$this->EE->load->library('widget');
 	}
 
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -60,7 +61,7 @@ class Widgets_mcp
 		$this->EE->cp->set_right_nav(array(
 			'widgets_add_area' => '#add-area'
 		));
-		
+
 		$this->EE->cp->load_package_js('widgets');
 
 		// Show the current page to be WIDGET
@@ -111,7 +112,7 @@ class Widgets_mcp
 	public function update_order()
 	{
 		$ids = explode(',', $this->EE->input->get('order'));
-		
+
 		$i = 1;
 		foreach($ids as $id)
 		{
@@ -124,7 +125,7 @@ class Widgets_mcp
 	{
 		$this->EE->cp->set_breadcrumb(WIDGET_URL, lang('widgets_module_name'));
 		$this->EE->cp->set_variable('cp_page_title', lang('widgets_add_instance'));
-		
+
 		$this->EE->input->post('cancel') and $this->EE->functions->redirect(WIDGET_URL);
 
 		// Capture posted back data
@@ -214,7 +215,7 @@ class Widgets_mcp
 
 		// Nevermind, find out whats going on
 		$widget = $this->EE->widget->get_instance($instance_id);
-		$widget_area = $this->EE->widget->get_area($widget_area_id);
+		$widget_area = $this->EE->widget->get_area($widget->widget_area_id);
 
 		$widget_areas = $this->EE->widget->list_areas();
 
@@ -346,16 +347,17 @@ class Widgets_mcp
 
 		// Nevermind, find out whats going on
 		$widget = $this->EE->widget->get_widget($id);
-		
+
 		// WTF you talkin 'bout?
 		$widget or $this->EE->functions->redirect(WIDGET_URL);
-		
+
 		$this->EE->cp->set_variable('cp_page_title', $widget->title);
 
 		$this->data->widget =& $widget;
-		
+
 		return $this->EE->load->view('details', $this->data, true);
 	}
+
 }
 
 /* End of file mcp.rest.php */
