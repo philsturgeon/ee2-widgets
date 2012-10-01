@@ -125,12 +125,15 @@
 									</td>
 									<td><?php echo $widget->title;?></td>
 									<td><?php echo form_input('', sprintf('{exp:widgets:instance id="%s"}', $widget->instance_id), 'readonly="readonly" style="width:95%"');?></td>
-									<td>
+									<td style="font-size:11px">
 										<a href="<?php echo WIDGET_URL.AMP.'method=edit_instance'.AMP.'instance_id='.$widget->instance_id; ?>">
 											<?php echo lang('edit'); ?>
 										</a> |
 										<a href="<?php echo WIDGET_URL.AMP.'method=delete_instance'.AMP.'instance_id='.$widget->instance_id; ?>">
 											<?php echo lang('delete'); ?>
+										</a>|
+										<a href="<?php echo WIDGET_URL.AMP.'method=copy_instance'.AMP.'instance_id='.$widget->instance_id; ?>">
+											<?php echo lang('Copy'); ?>
 										</a>
 									</td>
 								</tr>

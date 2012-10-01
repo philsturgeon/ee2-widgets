@@ -21,21 +21,23 @@ $lang['widgets_add_area'] 			= 'Add widget area';
 $lang['widgets_delete_area'] 		= 'Delete area';
 
 // Widget area field names
-$lang['widgets_area'] 				= 'Area';
+$lang['widgets_area'] 				  = 'Area';
 $lang['widgets_area_title'] 		= 'Area name';
 $lang['widgets_area_slug'] 			= 'Area short name';
 
 // Widget instance titles
 $lang['widgets_add_instance'] 		= 'Add widget instance';
 $lang['widgets_edit_instance'] 		= 'Edit widget instance';
-$lang['widgets_delete_instance'] 	= 'Delete widget instance';
+$lang['widgets_delete_instance']  = 'Delete widget instance';
+$lang['widgets_copy_instance'] 	  = 'Copy widget instance';
 
 $lang['widgets_instance_title'] 	= 'Title';
-$lang['widgets_tag_title']			= 'Tag';
+$lang['widgets_tag_title']			  = 'Tag';
 
 $lang['widgets_instance_add'] 		= 'Add';
 $lang['widgets_instance_edit'] 		= 'Edit';
-$lang['widgets_instance_delete'] 	= 'Delete';
+$lang['widgets_instance_delete']  = 'Delete';
+$lang['widgets_instance_copy'] 	  = 'Copy';
 
 $lang['widgets_no_areas']			= 'There are no widget areas.';
 $lang['widgets_no_instances']		= 'There are no widget instances for this area.';
