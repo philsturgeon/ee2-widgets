@@ -46,6 +46,7 @@ class Widgets_mcp
 		$this->EE->load->library('widget');
 	}
 
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -60,7 +61,7 @@ class Widgets_mcp
 		$this->EE->cp->set_right_nav(array(
 			'widgets_add_area' => '#add-area'
 		));
-		
+
 		$this->EE->cp->load_package_js('widgets');
 
 		// Show the current page to be WIDGET
@@ -111,7 +112,7 @@ class Widgets_mcp
 	public function update_order()
 	{
 		$ids = explode(',', $this->EE->input->get('order'));
-		
+
 		$i = 1;
 		foreach($ids as $id)
 		{
@@ -124,7 +125,7 @@ class Widgets_mcp
 	{
 		$this->EE->cp->set_breadcrumb(WIDGET_URL, lang('widgets_module_name'));
 		$this->EE->cp->set_variable('cp_page_title', lang('widgets_add_instance'));
-		
+
 		$this->EE->input->post('cancel') and $this->EE->functions->redirect(WIDGET_URL);
 
 		// Capture posted back data
@@ -214,7 +215,7 @@ class Widgets_mcp
 
 		// Nevermind, find out whats going on
 		$widget = $this->EE->widget->get_instance($instance_id);
-		$widget_area = $this->EE->widget->get_area($widget_area_id);
+		$widget_area = $this->EE->widget->get_area($widget->widget_area_id);
 
 		$widget_areas = $this->EE->widget->list_areas();
 
@@ -226,6 +227,43 @@ class Widgets_mcp
 
 		// Set the form action
 		$this->data->form_action = WIDGET_PARAMS.AMP.'method=edit_instance';
+		$this->data->widget =& $widget;
+		$this->data->widget_area =& $widget_area;
+		$this->data->widget_area_options =& $widget_area_options;
+
+		return $this->EE->load->view('instance_form', $this->data, TRUE);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * copy
+	 *
+	 * Form to copy an existing widget intance
+	 *
+	 * @return	string
+	 */
+	public function copy_instance()
+	{
+		$this->EE->cp->set_breadcrumb(WIDGET_URL, lang('widgets_module_name'));
+		$this->EE->cp->set_variable('cp_page_title', lang('widgets_copy_instance'));
+
+		// Get instance ID
+		$instance_id	= $this->EE->input->get_post('instance_id');
+
+		// Set form data with existing widget instance
+		$widget = $this->EE->widget->get_instance($instance_id);
+		$widget_area = $this->EE->widget->get_area($widget->widget_area_id);
+		$widget_areas = $this->EE->widget->list_areas();
+
+		$widget_area_options = array();
+		foreach($widget_areas as $area)
+		{
+			$widget_area_options[$area->id] = $area->title;
+		}
+
+		// Set the form action to add as a new instance
+		$this->data->form_action = WIDGET_PARAMS.AMP.'method=add_instance';
 		$this->data->widget =& $widget;
 		$this->data->widget_area =& $widget_area;
 		$this->data->widget_area_options =& $widget_area_options;
@@ -346,16 +384,17 @@ class Widgets_mcp
 
 		// Nevermind, find out whats going on
 		$widget = $this->EE->widget->get_widget($id);
-		
+
 		// WTF you talkin 'bout?
 		$widget or $this->EE->functions->redirect(WIDGET_URL);
-		
+
 		$this->EE->cp->set_variable('cp_page_title', $widget->title);
 
 		$this->data->widget =& $widget;
-		
+
 		return $this->EE->load->view('details', $this->data, true);
 	}
+
 }
 
 /* End of file mcp.rest.php */
