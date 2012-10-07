@@ -136,6 +136,8 @@ class Widgets_mcp
 		$options 		= $_POST;
 		unset($options['title'], $options['widget_id'], $options['widget_area_id']);
 
+		$widget = $this->EE->widget->get_widget($widget_id);
+
 		// Run what we have, see if it goes
 		if($_POST)
 		{
@@ -149,14 +151,13 @@ class Widgets_mcp
 
 			else
 			{
-				$this->data->error = lang('widgets_save_failed_message');
+				$title = empty($title) ? $widget->title : $title;
+				$this->data->error = sprintf(lang('widgets_save_failed_message'), $title);
 			}
 		}
 
 		// Nevermind, find out whats going on
-		$widget = $this->EE->widget->get_widget($widget_id);
 		$widget_area = $this->EE->widget->get_area($widget_area_id);
-
 		$widget_areas = $this->EE->widget->list_areas();
 
 		$widget_area_options = array();
@@ -196,6 +197,8 @@ class Widgets_mcp
 		$options 		= $_POST;
 		unset($options['title'], $options['instance_id'], $options['widget_area_id']);
 
+		$widget = $this->EE->widget->get_instance($instance_id);
+
 		// Run what we have, see if it goes
 		if($_POST)
 		{
@@ -209,12 +212,12 @@ class Widgets_mcp
 
 			else
 			{
-				$this->data->error = lang('widgets_save_failed_message');
+				$title = empty($title) ? $widget->title : $title;
+				$this->data->error = sprintf(lang('widgets_save_failed_message'), $title);
 			}
 		}
 
 		// Nevermind, find out whats going on
-		$widget = $this->EE->widget->get_instance($instance_id);
 		$widget_area = $this->EE->widget->get_area($widget->widget_area_id);
 
 		$widget_areas = $this->EE->widget->list_areas();
