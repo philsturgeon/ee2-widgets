@@ -41,6 +41,7 @@ class Widgets_mcp
 		$this->EE->javascript->output('WIDGET_URL = "'.html_entity_decode(WIDGET_URL).'";');
 		$this->EE->javascript->compile();
 
+		$this->data = new StdClass;
 		$this->data->base = WIDGET_URL;
 
 		$this->EE->load->library('widget');
