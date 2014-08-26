@@ -66,7 +66,7 @@ class Widgets_mcp
 		$this->EE->cp->load_package_js('widgets');
 
 		// Show the current page to be WIDGET
-		$this->EE->cp->set_variable('cp_page_title', lang('widgets_module_name'));
+		$this->EE->view->cp_page_title =  lang('widgets_module_name');
 
 		// Firstly, install any uninstalled widgets
 		$uninstalled_widgets = $this->EE->widget->list_uninstalled_widgets();
