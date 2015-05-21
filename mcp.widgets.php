@@ -66,7 +66,7 @@ class Widgets_mcp
 		$this->EE->cp->load_package_js('widgets');
 
 		// Show the current page to be WIDGET
-		$this->EE->view->cp_page_title =  lang('widgets_module_name');
+		$this->EE->view->cp_page_title = lang('widgets_module_name');
 
 		// Firstly, install any uninstalled widgets
 		$uninstalled_widgets = $this->EE->widget->list_uninstalled_widgets();
@@ -125,7 +125,7 @@ class Widgets_mcp
 	public function add_instance()
 	{
 		$this->EE->cp->set_breadcrumb(WIDGET_URL, lang('widgets_module_name'));
-		$this->EE->cp->set_variable('cp_page_title', lang('widgets_add_instance'));
+		$this->EE->view->cp_page_title = lang('widgets_add_instance');
 
 		$this->EE->input->post('cancel') and $this->EE->functions->redirect(WIDGET_URL);
 
@@ -188,7 +188,7 @@ class Widgets_mcp
 	public function edit_instance()
 	{
 		$this->EE->cp->set_breadcrumb(WIDGET_URL, lang('widgets_module_name'));
-		$this->EE->cp->set_variable('cp_page_title', lang('widgets_edit_instance'));
+		$this->EE->view->cp_page_title = lang('widgets_edit_instance');
 
 		// Capture posted back data
 		$title 			= $this->EE->input->post('title');
@@ -250,7 +250,7 @@ class Widgets_mcp
 	public function copy_instance()
 	{
 		$this->EE->cp->set_breadcrumb(WIDGET_URL, lang('widgets_module_name'));
-		$this->EE->cp->set_variable('cp_page_title', lang('widgets_copy_instance'));
+		$this->EE->view->cp_page_title = lang('widgets_copy_instance');
 
 		// Get instance ID
 		$instance_id	= $this->EE->input->get_post('instance_id');
@@ -285,7 +285,7 @@ class Widgets_mcp
 	public function delete_instance()
 	{
 		$this->EE->cp->set_breadcrumb(WIDGET_URL, lang('widgets_module_name'));
-		$this->EE->cp->set_variable('cp_page_title', lang('widgets_delete_instance'));
+		$this->EE->view->cp_page_title = lang('widgets_delete_instance');
 
 		$id = $this->EE->input->get_post('instance_id');
 
@@ -333,7 +333,7 @@ class Widgets_mcp
 	public function delete_area()
 	{
 		$this->EE->cp->set_breadcrumb(WIDGET_URL, lang('widgets_module_name'));
-		$this->EE->cp->set_variable('cp_page_title', lang('widgets_delete_area'));
+		$this->EE->view->cp_page_title = lang('widgets_delete_area');
 
 		$id = $this->EE->input->get_post('area_id');
 
@@ -392,7 +392,7 @@ class Widgets_mcp
 		// WTF you talkin 'bout?
 		$widget or $this->EE->functions->redirect(WIDGET_URL);
 
-		$this->EE->cp->set_variable('cp_page_title', $widget->title);
+		$this->EE->view->cp_page_title = lang('widgets_module_name');
 
 		$this->data->widget =& $widget;
 
